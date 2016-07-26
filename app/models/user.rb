@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
+
+  mount_uploader :image, ImageUploader
+
   include Clearance::User
-  
+  has_many :reservations
+  has_many :listings
   has_many :authentications, :dependent => :destroy
 
   def self.create_with_auth_and_hash(authentication,auth_hash)

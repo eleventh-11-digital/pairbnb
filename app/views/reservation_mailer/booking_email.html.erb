@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+ </head>
+ <body>
+   <h1>Property booked by, <%= @user.username %></h1>
+   
+   <p>
+     Someone have successfully booked this listing,<br>
+     Booking number: <%= @reservation.id %>.<br>
+     Booked from: <% @start =  @reservation.start_date %><%= @start.strftime('%b %d %Y').to_date %><br>
+     Until: <% @end = @reservation.end_date %><%= @end.strftime('%b %d %Y').to_date %><br>
+   </p>
+
+ </body>
+</html>

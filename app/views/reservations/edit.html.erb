@@ -1,0 +1,11 @@
+<%= link_to "Home", root_path %>
+<%= link_to "Back", user_path(current_user.id) %>
+
+<h1>Update your Reservation here!</h1>
+
+<%= form_for(@reservation) do |r| %>
+	<%= r.date_field :start_date %>
+	<%= r.date_field :end_date %>
+	<%= r.hidden_field :reservation_id, value: @reservation.id %>
+	<%= r.submit %>
+<% end %>

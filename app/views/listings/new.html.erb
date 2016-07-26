@@ -1,0 +1,12 @@
+<%= link_to "Home", root_path %>
+
+<h1>Create Your New List here!!</h1>
+
+<%=form_for(@list) do |form| %>
+	Photos: <%= form.file_field :property_images, multiple: true %>
+	Property Name: <%= form.text_field :property_name %>
+	Location: <%= form.text_field :location %>
+	Price to Rent: <%= form.text_field :pricing %>
+	Tags: <%= form.text_field :tag_list %>
+	<%= form.submit %>
+<%end%>

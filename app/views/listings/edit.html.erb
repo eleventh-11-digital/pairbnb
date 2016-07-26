@@ -1,0 +1,18 @@
+<%= link_to "Home", root_path %>
+<%= link_to "Back", user_path(current_user.id) %>
+
+<h1>Edit your Property!</h1>
+
+<%= form_for @list do |l| %>
+	<%= l.label :property_name %>
+	<%= l.text_field :property_name %>
+	<%= l.label :location %>
+	<%= l.text_field :location %>
+	<%= l.label :pricing %>
+	<%= l.text_field :pricing %>
+	<%= l.label :tag_list %>
+	<%= l.text_field :tag_list %>
+	<%= l.label :property_image %>
+	<%= l.file_field :property_images, multiple: true %>
+	<%= l.submit %>
+<%end%>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property_name: MyString
+  location: MyString
+  user_id: 1
+  pricing: 1
+
+two:
+  property_name: MyString
+  location: MyString
+  user_id: 1
+  pricing: 1

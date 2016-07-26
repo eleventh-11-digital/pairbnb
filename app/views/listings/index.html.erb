@@ -1,0 +1,46 @@
+<%= link_to "Home", root_path %>
+
+<h1>Available to Rent In Town</h1>
+
+
+<table id='table'>
+	<th>Photos of Property</th>
+
+	<th>Property Name</th>
+
+	<th>Location</th>
+
+	<th>Price per night</th>
+
+	<th>About this Listing</th>
+
+	<th>Booking</th>
+
+		<tr><% @lists.each do |l| %>
+
+			<td><% l.property_images.each do |image| %>
+					<%= image_tag(image.medium) %>
+				<%end%>
+			</td>
+
+			<td><%= l.property_name %></td>
+
+			<td><%= l.location %></td>
+
+			<td><%= l.pricing %></td>
+
+			<td><%= l.tag_list %></td>
+
+			<td><%= link_to "Book Now", listing_path(l) %></td>
+
+		</tr>
+
+		<%end%>
+
+</table>
+
+
+<div>
+	<%= will_paginate @lists %>
+</div>
+    

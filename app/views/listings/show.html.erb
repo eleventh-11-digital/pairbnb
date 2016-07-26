@@ -1,0 +1,23 @@
+<%= link_to "Home", root_path %>
+<h1><strong><%= @listing.property_name %></strong></h1>
+
+<table id='table'>
+<th>Property Photos</th>
+<th>Location</th>
+<th>Price per night</th>
+	<tr><td><% @listing.property_images.each do |image| %>
+			<%= image_tag(image.medium.url) %>
+			<%end%></td>
+			<td><%= @listing.location %></td>
+			<td><%= @listing.pricing %></td>
+	</tr>
+</table>
+
+
+	<%= form_for(@reservation) do |r| %>
+		<%= r.date_field :start_date %>
+		<%= r.date_field :end_date %>
+		<%= r.hidden_field :listing_id, value: @listing.id %>
+		<%= r.submit "Confirm"%>
+	<%end%>
+
