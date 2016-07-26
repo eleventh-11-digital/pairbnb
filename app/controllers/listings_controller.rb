@@ -16,7 +16,7 @@ class ListingsController < ApplicationController
 	def destroy
 		@listing = Listing.find(params[:id])
 		@listing.destroy
-		flash[:msg] = "Success to Remove Property"
+		flash.now[:msg] = "Success to Remove Property"
 		respond_to do |format|
 			format.html {redirect_to user_path(current_user.id)}
 			format.js
@@ -32,7 +32,7 @@ class ListingsController < ApplicationController
 			if @list.save
 				redirect_to user_path(current_user.id)
 			else
-				flash[:message] = 'Please try again!!'
+				flash.now[:message] = 'Please try again!!'
 				render :new
 			end
 	end
@@ -41,7 +41,7 @@ class ListingsController < ApplicationController
 		if @list.update(listing_params)
 			redirect_to user_path(current_user.id)
 		else
-			flash[:message] = 'Cannot update'
+			flash.now[:message] = 'Cannot update'
 			render :edit
 		end
 	end

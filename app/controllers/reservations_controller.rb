@@ -9,7 +9,7 @@ def create
 	@reservation = current_user.reservations.new(reservation_params)
 	if @reservation.save
 		flash[:msg] = "Success to Booking!"
-		ReservationMailer.booking_email(@reservation).deliver_now
+		ReservationJob.perform_later(@reservation)
 		redirect_to reservation_path(@reservation.id)
 	else
 		flash[:msg] = "Please try another date!!"
