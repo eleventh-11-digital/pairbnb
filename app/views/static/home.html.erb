@@ -31,7 +31,7 @@
 
 	<th>Booking</th>
 
-		<tr><% @search_list.each do |l| %>
+		<tr><% @listings.each do |l| %>
 
 			<td><% l.property_images.each do |image| %>
 					<%= image_tag(image.medium) %>

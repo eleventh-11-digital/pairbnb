@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rack-timeout'
+
 gem 'unicorn'
 gem 'searchkick'
 gem 'braintree'

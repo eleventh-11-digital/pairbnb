@@ -1,9 +1,9 @@
 class ListingsController < ApplicationController
 	before_action :find_list, only: [:show, :destroy, :update]
 
-  def autocomplete
-	render json: Listing.search(params[:query], autocomplete: true, limit: 10).map(&:property_name)
-  end
+ #  def autocomplete
+	# render json: Listing.search(params[:query], autocomplete: true, limit: 10).map(&:property_name)
+ #  end
 
 	def new	
 		@list = Listing.new
@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
 	def create
 		@list = current_user.listings.new(listing_params)
 			if @list.save
+				Listing.reindex
 				redirect_to user_path(current_user.id)
 			else
 				flash.now[:message] = 'Please try again!!'

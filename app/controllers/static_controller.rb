@@ -2,10 +2,10 @@ class StaticController < ApplicationController
   def home
   	if params[:query].present?
   		Listing.reindex
-      @search_list = Listing.search(params[:query], autocomplete: true)
+      @listings = Listing.search(params[:query], autocomplete: true)
 
     else
-      @search_list = Listing.all
+      @listings = Listing.all
     end
   end
   
