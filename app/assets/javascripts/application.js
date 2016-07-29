@@ -14,9 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-	$('a[data-remote]').click(function(e){
-		$(e.target).text('Removing...');
-	});
-});
+//= require twitter/typeahead

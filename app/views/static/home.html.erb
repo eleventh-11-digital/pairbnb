@@ -7,3 +7,49 @@
 	<%end%>
 
 <%= link_to "View All of our List", listings_path %>
+
+
+<%= form_tag root_path, class: "list_search", method: :get do %>
+	<p>
+		<%= text_field_tag :query, params[:query] %>
+		<%= submit_tag "Search", name: nil %>
+	</p>
+<% end %>
+
+
+
+<table id='table'>
+	<th>Photos of Property</th>
+
+	<th>Property Name</th>
+
+	<th>Location</th>
+
+	<th>Price per night</th>
+
+	<th>About this Listing</th>
+
+	<th>Booking</th>
+
+		<tr><% @search_list.each do |l| %>
+
+			<td><% l.property_images.each do |image| %>
+					<%= image_tag(image.medium) %>
+				<%end%>
+			</td>
+
+			<td><%= l.property_name %></td>
+
+			<td><%= l.location %></td>
+
+			<td><%= l.pricing %></td>
+
+			<td><%= l.tag_list %></td>
+
+			<td><%= link_to "Book Now", listing_path(l) %></td>
+
+		</tr>
+
+		<%end%>
+
+</table>

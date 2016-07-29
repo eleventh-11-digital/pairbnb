@@ -1,12 +1,17 @@
 class ListingsController < ApplicationController
 	before_action :find_list, only: [:show, :destroy, :update]
+
+  def autocomplete
+	render json: Listing.search(params[:query], autocomplete: true, limit: 10).map(&:property_name)
+  end
+
 	def new	
 		@list = Listing.new
 	end
 
 	def index
 		@lists = Listing.paginate(:page => params[:page], :per_page => 2)
-  end
+	end
 
 	def show
 		@listing = Listing.find(params[:id])

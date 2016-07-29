@@ -7,6 +7,7 @@ end
 
 def create
 	@reservation = current_user.reservations.new(reservation_params)
+	@reservation.payment_price = price_calculate(@reservation)
 	if @reservation.save
 		flash[:msg] = "Success to Booking!"
 		ReservationJob.perform_later(@reservation)
@@ -21,7 +22,9 @@ end
 
 def show
 	@user = User.find(current_user.id)
-	@reservations = @user.reservations
+    @client_token = Braintree::ClientToken.generate
+    @reservation = Reservation.find(params[:id])
+    @payment = Payment.new
 end
 
 def edit
@@ -56,5 +59,13 @@ private
 
 	def find_reservation
 		@reservation = Reservation.find(params[:id])
+	end
+
+	def price_calculate(reservation)
+		@start = reservation.start_date
+		@end = reservation.end_date
+		@price = reservation.listing.pricing
+		@rent = @end - @start
+		return @price * @rent / 86400
 	end
 end

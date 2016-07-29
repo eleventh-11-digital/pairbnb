@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+gem 'rack-timeout'
+gem 'unicorn'
+gem 'searchkick'
+gem 'braintree'
 gem 'sidekiq'
 gem 'validates_timeliness'
 gem 'will_paginate', '~> 3.1.0'
@@ -37,7 +40,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'twitter-typeahead-rails', :git => "git://github.com/yourabi/twitter-typeahead-rails.git"
 # Use Unicorn as the app server
 # gem 'unicorn'
 

@@ -4,3 +4,22 @@
 <h1>Its Confim!! Thanks you and visits our site again!</h1>
 
 <p>Your Booking number is (<%= @reservation.id %>)</p>
+
+
+
+<%= form_for :payment, id:"checkout", url: "/payments" do |f| %>
+  <div id="payment-form"></div>
+  <%= f.hidden_field :reservation_id, value: @reservation.id %>
+  <input type="submit" value="Pay RM<%= @reservation.payment_price %>">
+<%end%>
+
+<script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
+<script>
+// We generated a client token for you so you can test out this code
+// immediately. In a production-ready integration, you will need to
+// generate a client token on your server (see section below).
+
+braintree.setup("<%= @client_token %>", "dropin", {
+  container: "payment-form"
+});
+</script>
