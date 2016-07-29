@@ -15,8 +15,7 @@ Rails.application.routes.draw do
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   root 'static#home'
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-  
-  get"/index" => "static#index"
+
 
   resources :listings 
   resources :reservations
